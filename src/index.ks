@@ -2,7 +2,7 @@ require|import '@zokugun/lang.math.vector'
 
 export namespace Matrix {
 	func adjugate(matrix: Array): Array? { // {{{
-		if cof ?= cofactor(matrix) {
+		if const cof = cofactor(matrix) {
 			return transpose(cof)
 		}
 		else {
@@ -132,8 +132,8 @@ export namespace Matrix {
 	} // }}}
 
 	func inverse(matrix: Array): Array? { // {{{
-		if d ?= determinant(matrix) {
-			return scale(adjugate(matrix), 1 / d)
+		if const d = determinant(matrix) {
+			return scale(adjugate(matrix) as Array, 1 / d)
 		}
 		else {
 			return null
